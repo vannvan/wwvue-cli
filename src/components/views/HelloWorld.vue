@@ -28,6 +28,8 @@ export default {
       this.$http.post(this.URL_CONFIG.UrlConfig.getUserInfo,datas)
       .then(res =>{
         console.log(res)
+      }).catch(error =>{
+        console.log(error)
       })
     }
   }

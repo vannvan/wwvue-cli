@@ -1,16 +1,10 @@
 import URL_CONFIG from '@/assets/js/urlConfig.js';
 const mixin = {
-    data(){
+     data(){
       return {
         URL_CONFIG:URL_CONFIG
-      }
-    },
-    filters:{
-          fdate:function(timestamp){
-            let data=new Date(timestamp)
-            return this.formatDate(data,'MM-dd hh:mm')
-        }
-    },
+     }
+     },
      methods: {
       formatDate(date, fmt) {
           if (/(y+)/.test(fmt)) {
