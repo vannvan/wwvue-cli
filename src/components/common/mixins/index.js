@@ -1,7 +1,18 @@
+import URL_CONFIG from '@/assets/js/urlConfig.js';
 const mixin = {
+    data(){
+      return {
+        URL_CONFIG:URL_CONFIG
+      }
+    },
+    filters:{
+          fdate:function(timestamp){
+            let data=new Date(timestamp)
+            return this.formatDate(data,'MM-dd hh:mm')
+        }
+    },
      methods: {
       formatDate(date, fmt) {
-          console.log(date,fmt)
           if (/(y+)/.test(fmt)) {
               fmt = fmt.replace(RegExp.$1, (date.getFullYear() + '').substr(4 - RegExp.$1.length));
           }
@@ -32,4 +43,4 @@ const mixin = {
     }
 }
 
-export default  mixin
+export default mixin

@@ -6,7 +6,6 @@ import router from './router'
 
 import axios from 'axios';
 import "babel-polyfill";
-import '@/assets/js/flexible.debug.js';
 import store from '@/store/main.js';
 //自定义全局mixin
 import mixins from '@/components/common/mixins'
