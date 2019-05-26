@@ -1,0 +1,195 @@
+@charset "utf-8";
+$browser-default-font-size: 75px !default; //变量的值可以根据自己需求定义
+@function pxTorem($px) {
+    //$px为需要转换的字号
+    @return $px / $browser-default-font-size*1rem;
+}
+
+// *{
+//   -webkit-overflow-scrolling: touch;
+// }
+
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td {
+  margin:0;
+  padding:0;
+  font-family: "PingFangSC-Regular";
+  outline:none;
+
+}
+body{
+  margin: 0px auto!important;
+  width:getUnit(750px);
+  font-size: getUnit(28px);
+  font-weight: 400;
+  background-color:#fff;
+}
+
+//边框颜色
+$b1:#bbb;
+//圆角
+$radius:pxTorem(10px);
+//浮动
+$float:left;
+
+//宽高及
+@mixin wh($width, $height, $display:null){
+  width: getUnit($width);
+	height: getUnit($height);
+  @if ($display != '' and $display != null) {
+    display:$display;
+  }
+}
+
+//浮动+宽
+@mixin fw($width, $float:$float){
+  width: getUnit($width);
+  float: $float;
+}
+
+//指定宽度，水平居中
+@mixin wc($width){
+  width: getUnit($width);
+  margin: 0 auto;
+}
+
+//高+行高
+@mixin hl($height){
+  height: getUnit($height);
+  line-height: getUnit($height);
+}
+
+//指定宽高，单行文字垂直居中
+@mixin whl($width, $height){
+  width: getUnit($width);
+  height: getUnit($height);
+  line-height:getUnit($height);
+}
+
+//指定宽高，水平居中
+@mixin whc($width, $height){
+  width: getUnit($width);
+  height: getUnit($height);
+  margin: 0 auto;
+}
+
+//边线
+@mixin border($direction:bottom, $px:1px, $color:$b1){
+  @if $direction == top {
+    border-top: $px solid $color;
+  }@else if $direction == bottom {
+    border-bottom: $px solid $color;
+  }@else if $direction == left {
+    border-left: $px solid $color;
+  }@else if $direction == right {
+    border-right: $px solid $color;
+  }@else{
+    border: $px solid $color;
+  }
+}
+
+/*文本格式化，超出范围，显示省略号*/
+@mixin text-overflow($width:100%,$display:block) {
+  width: getUnit($width);
+  display: $display;
+  white-space: nowrap;
+  -ms-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+/*多行文本格式化，超出范围，显示省略号*/
+@mixin texts-overflow($conut,$display:block) {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $conut;
+  overflow: hidden;
+}
+
+//字体，颜色
+@mixin fc($size, $weight, $color){
+	font-size: pxTorem($size);
+  font-weight: $weight;
+	color: $color;
+}
+
+//阴影
+@mixin shadow($h-shadow:0px, $v-shadow:-1px, $blur:9px, $color:#DBDBDB){
+  -moz-box-shadow:$h-shadow $v-shadow $blur $color;
+  -webkit-box-shadow:$h-shadow $v-shadow $blur $color;
+  box-shadow:$h-shadow $v-shadow $blur $color;
+}
+
+//圆角
+@mixin radius($radius:$radius){
+  -moz-border-radius:getUnit($radius); -webkit-border-radius:getUnit($radius); border-radius:getUnit($radius);
+}
+
+//背景图
+//@include bg100('~@/assets/images/img-icon.png');
+@mixin bg100($url){
+  background:url($url); background-size:100% 100%;
+  -moz-background-size:100% 100%; background-repeat:no-repeat;
+}
+
+//定位
+@mixin position($position,$top:null,$right:null,$bottom:null,$left:null){
+  position:$position;
+  @if ($left!="" & & $left!=null) {
+    left: $left;
+  }
+  @if ($right!="" & & $right!=null) {
+    right: $right;
+  }
+  @if ($top!="" & & $top!=null) {
+    top: $top;
+  }
+  @if ($bottom!="" & & $bottom!=null) {
+    bottom: $bottom;
+  }
+}
+
+
+//箭头
+//@include arrow(top,15px,#fff);
+@mixin arrow($direction,$size,$color) {
+    width: 0;
+    height: 0;
+    line-height: 0;
+    font-size: 0;
+    margin: 0 auto;
+    overflow: hidden;
+    border-width: getUnit($size);
+    cursor: pointer;
+    @if $direction == top {
+        border-style: dashed dashed solid dashed;
+        border-color: transparent transparent $color transparent;
+        border-top: none;
+    }
+    @else if $direction == bottom {
+        border-style: solid dashed dashed dashed;
+        border-color: $color transparent transparent transparent;
+        border-bottom: none;
+    }
+    @else if $direction == right {
+        border-style: dashed dashed dashed solid;
+        border-color: transparent transparent transparent $color;
+        border-right: none;
+    }
+    @else if $direction == left {
+        border-style: dashed solid dashed dashed;
+        border-color: transparent $color transparent transparent;
+        border-left: none;
+    }
+}
+
+//判断单位
+@function getUnit($unit) {
+  @if unit($unit) == '%' {
+    @return $unit;
+  }
+  @else if unit($unit) == 'px'{
+    @return pxTorem($unit);
+  }
+  @else if unit($unit) == ''{
+    @return $unit;
+  }
+}
