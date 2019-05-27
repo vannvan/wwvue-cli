@@ -16,4 +16,7 @@ if (exec('git push').code !== 0) {
   echo('Error: Git commit failed');
   exit(1);
 }
-exec(`echo git success ${name}`);
+// exec(`echo git success ${name}`);
+
+//绿色字体
+echo('-e',"\033[0;32m echo git success \033[0m"+`${name}`);
