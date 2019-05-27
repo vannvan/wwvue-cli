@@ -2,6 +2,7 @@
 var name = process.argv[2] || 'Auto-commit';
 var shell = require("shelljs");
 var exec = shell.exec;
+var echo = shell.echo;
 
 if (exec('git add .').code !== 0) {
   echo('Error: Git add failed');
