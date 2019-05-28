@@ -1,7 +1,7 @@
 {
   "name": "{{name}}",
   "version": "1.0.0",
-  "description": "A Vue.js project",
+  "description": "{{description}}",
   "author": "https://github.com/vannvan",
   "private": false,
   "scripts": {
