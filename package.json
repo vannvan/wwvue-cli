@@ -2,7 +2,7 @@
   "name": "{{name}}",
   "version": "1.0.0",
   "description": "{{description}}",
-  "author": "https://github.com/vannvan",
+  "author": "{{author}}",
   "private": false,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
