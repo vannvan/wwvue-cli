@@ -13,7 +13,7 @@ const store = new Vuex.Store({
     baseInfoStore: baseInfo_store,
   },
   plugins: [createPersistedState({
-      storage: window.sessionStorage
+      storage: window.sessionStorage   //可改为localStorage
   })]
 })
 //切换页面一般需要的loading动画状态

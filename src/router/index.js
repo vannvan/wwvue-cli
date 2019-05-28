@@ -18,6 +18,6 @@ export default new Router({
       meta:{
           title:'helloWorld'
       }
-    },
+    }
   ]
 })
