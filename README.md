@@ -1,4 +1,4 @@
-# wvue-cli
+# wwvue-cli
 
 > A Vue.js project
 
