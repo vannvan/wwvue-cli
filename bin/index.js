@@ -28,14 +28,14 @@ const promptList = [
           default: setDefault
         }
       ]
-program.version('1.1.0', '-v, --version')
+program.version('1.0.6', '-v, --version')
   .command('init <name>')
   .action((name) => {
     if(!fs.existsSync(name)){
       inquirer.prompt(promptList).then((answers) => {
         const spinner = ora('正在下载模板...');
         spinner.start();
-        download('https://github.com:vannvan/wvue-cli#master', name, {clone: true}, (err) => {
+        download('https://github.com:vannvan/wvue-cli#1.x', name, {clone: true}, (err) => {
           if(err){
             spinner.fail();
             console.log(symbols.error, chalk.red(err));
