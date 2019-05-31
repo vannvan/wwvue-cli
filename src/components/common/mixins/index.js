@@ -1,37 +1,41 @@
 import URL_CONFIG from '@/assets/js/urlConfig.js';
+import { formatDate } from '@/assets/js/date.js';
 const mixin = {
      data(){
       return {
         URL_CONFIG:URL_CONFIG
-     }
+      }
+     },
+     filters:{
+         fdate:function(timestamp){
+           // 这里默认认为是11位时间戳
+           let date=new Date(timestamp*1000)
+           return formatDate(date,'yyyy-MM-dd hh:mm')
+       }
+     },
+     computed:{
+       RandomColor() {
+         return function(){
+           let r, g, b;
+           r = Math.floor(Math.random() * 256);
+           g = Math.floor(Math.random() * 256);
+           b = Math.floor(Math.random() * 256);
+           return "rgb(" +r + ',' +g+ ',' +b+ ")";
+         }
+       }
      },
      methods: {
-      formatDate(date, fmt) {
-          if (/(y+)/.test(fmt)) {
-              fmt = fmt.replace(RegExp.$1, (date.getFullYear() + '').substr(4 - RegExp.$1.length));
-          }
-          let o = {
-              'M+': date.getMonth() + 1,
-              'd+': date.getDate(),
-              'h+': date.getHours(),
-              'm+': date.getMinutes(),
-              's+': date.getSeconds()
-          };
-          for (let k in o) {
-              if (new RegExp(`(${k})`).test(fmt)) {
-                  let str = o[k] + '';
-                  fmt = fmt.replace(RegExp.$1, (RegExp.$1.length === 1) ? str : this.padLeftZero(str));
-              }
-          }
-          return fmt;
+      formatTime(timestamp) {
+        let date = new Date(timestamp*1000)
+        return formatDate(date,'yyyy-MM-dd hh:mm')
       },
       padLeftZero(str) {
           return ('00' + str).substr(str.length);
       },
-      loadPage(path,params){
+      loadPage(path,query){
         this.$router.push({
           path:path,
-          query:params
+          query:query
         })
       }
     }
