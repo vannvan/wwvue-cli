@@ -5,7 +5,6 @@
 ## 预实现的功能
 
 - 公共样式统一管理，全局sass的友好引入
-
 - 公共js统一管理
 - 解决vue脚手架初始化的部分问题
 - 路由形式、接口统一管理
@@ -32,8 +31,8 @@
 mixin.scss内容详见 [mixin公共sass函数](https://github.com/vannvan/wvue-cli/blob/master/src/assets/scss/mixin.scss)
 
 common.scss内容如下
- >@import './mixin.scss';   // 公共函数
- >@import './icomoon.css'; //字体图标
+ >@import './mixin.scss';   // 公共函数  
+ >@import './icomoon.css'; //字体图标  
  >@import './wvue-cli.scss';  //项目公共样式
 
 修改`utils.js`引入commom.css,就不用在main.js 或其他项目中的页面引入了
@@ -160,9 +159,9 @@ export default mixin
 
 在main.js中引入
 
->//自定义全局mixin
->import mixins from '@/components/common/mixins'
->Vue.mixin(mixins)
+> //自定义全局mixin  
+> import mixins from '@/components/common/mixins'  
+> Vue.mixin(mixins)
 
 ## 全局指令管理
 
@@ -209,9 +208,9 @@ export default mydirective;
 
 在main.js中引入
 
->//自定义全局指令
->import directive from '@/components/common/directive'
->Vue.use(directive)
+>//自定义全局指令  
+>import directive from '@/components/common/directive'  
+>Vue.use(directive)  
 
 ## store 模块化管理
 
@@ -358,5 +357,5 @@ new Vue({
 >[A scaffolding based on vue.js](https://github.com/vannvan/wvue-cli)
 
 开箱即用操作方式
-> npm i wwvue-cli -g
+> npm i wwvue-cli -g  
 > wwvue-cli init project-name
