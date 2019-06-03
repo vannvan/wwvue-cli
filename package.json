@@ -31,7 +31,11 @@
   },
   "keywords": [
     "vue",
-    "cli"
+    "cli",
+    "vue-cli",
+    "vue-directive",
+    "vue-mixins",
+    "components"
   ],
   "devDependencies": {}
 }
