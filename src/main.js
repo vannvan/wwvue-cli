@@ -13,6 +13,9 @@ Vue.mixin(mixins)
 //自定义全局指令
 import directive from '@/components/common/directive'
 Vue.use(directive)
+//自定义组件
+import WUI from '../packages/index'
+Vue.use(WUI)
 
 Vue.config.productionTip = false
 Vue.prototype.$http = axios;

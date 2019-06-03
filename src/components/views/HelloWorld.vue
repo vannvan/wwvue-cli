@@ -6,7 +6,7 @@
     <hr>
     <div class="iconBox">
       <div class="iconItem" v-for="(item, index) in iconList">
-        <i :class="item" :style="{color:RandomColor()}"></i>
+        <w-icon :class="item"  :style="{color:RandomColor()}"></w-icon>
         <p>{{item}}</p>
       </div>
     </div>
@@ -72,9 +72,9 @@ h1{
   }
 }
 hr{
-  width:80%;
-  margin:25px auto;
+  width:100%;
   height:0;
-  border:1px solid #ccc
+  align:center;
+  border:1px solid #f00
 }
 </style>
