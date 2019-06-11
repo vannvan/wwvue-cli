@@ -350,12 +350,6 @@ new Vue({
 
 至此，一个基本完备的vue项目脚手架就完成了，以后每次初始化项目都可以按照这套方案来进行，省去了很多协作开发的交流环节，形成了能够满足大多数项目的目录及文件构成形式，将此项目托管至私服每次初始化项目只需拉取这个脚手架便能省区不少初始化项目的时间，岂不美哉！
 
-
-
-此脚手架项目已开源至github，欢迎大家提出建议和互相交流，同时也可随意将项目拉下来进行使用。
-
->[A scaffolding based on vue.js](https://github.com/vannvan/wvue-cli)
-
 开箱即用操作方式
 > npm i wwvue-cli -g  
 > wwvue-cli init project-name
