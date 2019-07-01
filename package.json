@@ -9,7 +9,8 @@
     "start": "npm run dev",
     "build": "node build/build.js",
     "push": "node build/push.js",
-    "pack": "node build/zip.js"
+    "pack": "node build/zip.js",
+    "tree": "node build/dir-tree.js"
   },
   "dependencies": {
     "axios": "^0.18.0",

@@ -31,7 +31,7 @@ process.stdout.write(`请输入压缩文件名:`)
 process.stdin.resume()
 process.stdin.on('data', (chunk) => {
 	chunk = chunk.toString().trim();  //输入的文件名
-  var	name = chunk || prefixName + time;
+  var name = chunk || prefixName + time;
 	toZip(name)
 });
 
