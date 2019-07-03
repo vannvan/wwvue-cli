@@ -1,8 +1,8 @@
 {
   "name": "{{name}}",
   "version": "1.0.0",
-  "description": "{description}",
-  "author": "https://github.com/vannvan",
+  "description": "{{description}}",
+  "author": "{{author}}",
   "private": false,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
@@ -13,7 +13,7 @@
     "tree": "node build/dir-tree.js"
   },
   "config": {
-    "pack-prefix":"{prefix}"
+    "pack-prefix":"{{prefix}}"
   },
   "dependencies": {
     "axios": "^0.18.0",
