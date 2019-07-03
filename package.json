@@ -13,7 +13,7 @@
     "tree": "node build/dir-tree.js"
   },
   "config": {
-    "pack-prefix":"{{prefix}}"
+    "pack-prefix":"{{pack-prefix}}"
   },
   "dependencies": {
     "axios": "^0.18.0",
