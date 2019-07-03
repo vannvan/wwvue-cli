@@ -1,7 +1,7 @@
 {
-  "name": "wwvue-cli",
-  "version": "1.0.5",
-  "description": "",
+  "name": "{name}",
+  "version": "1.0.0",
+  "description": "{description}",
   "author": "https://github.com/vannvan",
   "private": false,
   "scripts": {
@@ -11,6 +11,9 @@
     "push": "node build/push.js",
     "pack": "node build/zip.js",
     "tree": "node build/dir-tree.js"
+  },
+  "config": {
+    "pack-prefix":"{prefix}"
   },
   "dependencies": {
     "axios": "^0.18.0",
