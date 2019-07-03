@@ -1,6 +1,6 @@
 {
   "name": "wwvue-cli",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "A scaffolding based on vue.js",
   "bin": {
     "wwvue": "bin/index.js"
@@ -12,7 +12,11 @@
     "type": "git",
     "url": "git+https://github.com/vannvan/wvue-cli.git"
   },
-  "files":["package.json","bin","lib"],
+  "files": [
+    "package.json",
+    "bin",
+    "lib"
+  ],
   "author": "https://github.com/vannvan",
   "license": "MIT",
   "bugs": {
