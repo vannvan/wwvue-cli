@@ -7,6 +7,23 @@
 ![](https://badgen.net/npm/node/next)
 ![](https://badgen.net/github/commits/vannvan/wvue-cli)
 ![](https://badgen.net/github/last-commit/vannvan/wvue-cli)
+
+## Function List
+- 静态资源存放位置统一管理
+- 公共样式管理、字体库、第三方脚本统一管理
+- 开箱即用的sass
+- router统一管理
+- vuex模块化管理 store
+- 接口统一管理  urlconfig
+- 公共指令基础配置 directive
+- 全局混入基础配置 mixins
+- 自定义组件导出和引入
+- 命令行打包压缩  
+- 命令行生成项目目录树
+- 命令行一步push本地仓库
+- 自动获取局域网ip，打开局域网server
+- 等待挖掘...
+
 ## Install
 
 > npm i wwvue-cli -g
@@ -78,7 +95,8 @@
 
 ## Generate directory tree
 
-运用命令行生成项目目录树，并保存为txt文件。
+运用命令行生成项目目录树
 
-> npm run tree >>tree.txt
-## 更多人性化功能还在不断迭代更新！
+> npm run tree    //命令行查看  
+> npm run tree >>tree.txt    //生成文件
+## 更多便于vue项目开发的功能还在不断迭代更新！
