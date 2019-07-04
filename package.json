@@ -6,6 +6,7 @@
     "wwvue": "bin/index.js"
   },
   "scripts": {
+    "predeploy": "npm version patch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
