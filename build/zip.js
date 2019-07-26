@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 process.stdin.setEncoding('utf8');
 const compressing = require('compressing');
+var pjson = require('../package.json');
 
-const prefixName = 'wvue-cli_';  //默认压缩包前缀
+const prefixName = pjson.packPrefix || 'wvue-cli_';  //默认压缩包前缀
 
 function formatDateToString(date){
 	var year = date.getFullYear();
