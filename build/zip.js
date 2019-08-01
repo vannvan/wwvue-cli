@@ -10,10 +10,10 @@ function formatDateToString(date){
 	var month = date.getMonth()+1;
 	var day = date.getDate();
 	var hour = date.getHours();
-	month < 10 ? '0' + month: month;
-	day < 10 ? '0' + day: day;
-	hour < 10 ? '0' + hour: hour;
-	return month+day+hour;
+	let fm = month < 10 ? '0' + month: month;
+	let fd = day < 10 ? '0' + day: day;
+	let fh = hour < 10 ? '0' + hour: hour;
+  	return fm+fd+fh
 }
 function toZip(name){
 	compressing.zip.compressDir('dist', `${name}.zip`)
