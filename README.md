@@ -32,54 +32,7 @@
 
 > wwvue init project-name
 
-## Catelog
 
-├─ build  
-│ ...  
-│ ├─dir-tree.js  
-│ ├─push.js  
-│ ├─zip.js  
-├─ config  
-│ ├─dev.env.js  
-│ ├─get-ip.js  
-│ ├─index.js  
-│ └─prod.env.js  
-├─ packages     //custom components  
-│ ├─ icon  
-│ │ ├─ src  
-│ │ │ └─icon.vue  
-│ │ └─index.js  
-│ └─index.js  
-├─ src  
-│ ├─ assets  
-│ │ ├─ fonts  
-│ │ ├─ images  
-│ │ │ └─Catalog.png    
-│ │ ├─ js    
-│ │ │ └─urlConfig.js  //global urlConfig  
-│ │ ├─ scss  
-│ │ │ ├─common.scss  
-│ │ │ ├─icomoon.css  
-│ │ │ └─wvue-cli.scss  
-│ │ └─logo.png  
-│ ├─ components  
-│ │ ├─ common  
-│ │ │ ├─ directive  
-│ │ │ │ └─index.js  
-│ │ │ ├─ mixins  
-│ │ │ │ └─index.js  
-│ │ ├─ views  
-│ │ └─index.vue  
-│ ├─ router  
-│ │ └─index.js  
-│ ├─ store  
-│ │ ├─baseInfo.js  
-│ │ └─main.js  
-│ ├─App.vue  
-│ └─main.js  
-├─index.html  
-
-<!-- ![](https://github.com/vannvan/wvue-cli/blob/master/src/assets/images/Catalog.png?raw=true) -->
 
 ## Command line deployment
 
@@ -98,5 +51,10 @@
 运用命令行生成项目目录树
 
 > npm run tree    //命令行查看  
-> npm run tree >>tree.txt    //生成文件
+> npm run tree >>tree.txt    //生成文件  
+## Analog interface data
+本地模拟数据接口  
+此功能算不上刚需，如不需要可在初始化完毕后删除mock目录，如有模拟数据的需要，可采取mock的方案，此方案可以避免`mock`插件的某些坑，当然任何方案都不可能是完美的，可按需选择。  
+因为可能不算刚需，故采取将此功能做独立配置，不与主项目依赖产生交集，需在mock目录下单独安装依赖,安装完依赖后，运行命令：
+> npm run serve
 ## 更多便于vue项目开发的功能还在不断迭代更新！
