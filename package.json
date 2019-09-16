@@ -11,7 +11,8 @@
     "build": "node build/build.js",
     "push": "node build/push.js",
     "pack": "node build/zip.js",
-    "tree": "node build/dir-tree.js"
+    "tree": "node build/dir-tree.js",
+    "ccc": "node build/create-custom-component.js"
   },
   "dependencies": {
     "axios": "^0.18.0",
