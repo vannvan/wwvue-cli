@@ -6,11 +6,11 @@ export default new Router({
   routes: [
     {
       path: '*',
-      redirect: '/index'
+      redirect: '/Index'
     },
     {
-      path:'/index',
-      component: resolve => require(['@/components/index.vue'], resolve),
+      path:'/Index',
+      component: resolve => require(['@/components/Index.vue'], resolve),
     },
     {
       path: '/HelloWorld',

@@ -12,7 +12,7 @@ export default {
 
 <style>
 #app{
-  text-align: center;
-  margin-top: 50px;
+  /* text-align: center; */
+  /* margin-top: 50px; */
 }
 </style>

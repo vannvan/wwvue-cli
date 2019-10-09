@@ -1,17 +1,18 @@
 {
-  "name": "{{name}}",
+  "name": "name",
   "version": "1.0.0",
   "description": "{{description}}",
   "author": "{{author}}",
   "private": false,
-  "packPrefix":"{{packPrefix}}",
+  "packPrefix": "{{packPrefix}}",
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
     "build": "node build/build.js",
     "push": "node build/push.js",
     "pack": "node build/zip.js",
-    "tree": "node build/dir-tree.js"
+    "tree": "node build/dir-tree.js",
+    "ccc": "node build/create-custom-component.js"
   },
   "dependencies": {
     "axios": "^0.18.0",

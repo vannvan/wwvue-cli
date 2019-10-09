@@ -1,0 +1,33 @@
+{
+  "name": "mock-api",
+  "version": "1.0.0",
+  "description": "node-mock-api",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "nodemon -w ./ --exec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vannvan/node-mock-api.git"
+  },
+  "keywords": [
+    "node",
+    "mock",
+    "api",
+    "koa"
+  ],
+  "author": "vannvan <adowrww@gmail.com> (https://github.com/vannvan)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vannvan/node-mock-api/issues"
+  },
+  "homepage": "https://github.com/vannvan/node-mock-api#readme",
+  "dependencies": {
+    "glob": "^7.1.4",
+    "koa": "^2.8.1",
+    "koa-logger": "^3.2.1",
+    "koa-router": "^7.4.0",
+    "nodemon": "^1.19.2"
+  }
+}
