@@ -27,7 +27,7 @@ export default {
     }
   },
   mounted() {
-    // this.getUserInfo()
+    this.getUserInfo()
     //这里使用一下定义在mixin中的方法
     console.log(this.formatTime(this.date))
   },
@@ -37,7 +37,7 @@ export default {
         token:''
       }
       // URL_CONFIG 来自mixin
-      this.$http.post(this.URL_CONFIG.UrlConfig.getUserInfo,datas)
+      this.$http.post(this.URL_CONFIG.getUserInfo,datas)
       .then(res =>{
         console.log(res)
       }).catch(error =>{
@@ -50,9 +50,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">
-h1{
-  color: $themeColor
-}
+
 .iconBox{
   width: 80%;
   height: auto;

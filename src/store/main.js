@@ -3,74 +3,52 @@ import Vuex from 'vuex'
 import router from '@/router'
 import Axios from 'axios'
 import createPersistedState from 'vuex-persistedstate'
-
-import baseInfo_store from './baseInfo'
+import ViewUI from 'view-design';
 Vue.use(Vuex)
+
+const requireModule = require.context('./', false, /\.js$/)
+const modules = {}
+
+requireModule.keys().forEach(fileName => {
+ const moduleName = fileName.replace(/(\.\/|\.js)/g, '')
+ modules[moduleName] = {
+  ...requireModule(fileName).default
+ }
+})
 
 const store = new Vuex.Store({
 // 用不同的模块管理vuex存储数据
-  modules: {
-    baseInfoStore: baseInfo_store,
-  },
+  modules: modules,
   plugins: [createPersistedState({
       storage: window.sessionStorage   //可改为localStorage
   })]
 })
-//切换页面一般需要的loading动画状态
-store.registerModule('pageSwitch', {
-  state: {
-    isLoading: false
-  },
-  mutations: {
-    updateLoadingStatus (state, payload) {
-      state.isLoading = payload.isLoading
-    }
-  }
-})
+
 //切换路由的同时切换title
 router.beforeEach(function (to, from, next) {
   if(to.meta.title){
     document.title = to.meta.title
   }
-  store.commit('updateLoadingStatus', {isLoading: true})
+  store.commit('setPageSwitch',true)
   next()
 })
 
 router.afterEach(function (to) {
-  store.commit('updateLoadingStatus', {isLoading: false})
+  store.commit('setPageSwitch',false)
 })
-//ajax请求的动画状态
-store.registerModule('ajaxSwitch', {
-  state: {
-    ajaxIsLoading: false,
-    ajaxIsPrompt: false,
-  },
-  mutations: {
-    ajaxStar (state) {
-      state.ajaxIsLoading = true
-    },
-    ajaxEnd (state) {
-      state.ajaxIsLoading = false
-    },
-    ajaxPromptShow (state) {
-      state.ajaxIsPrompt = true
-    },
-    ajaxPromptHide (state) {
-      state.ajaxIsPrompt = false
-    }
-  },
-  getter : {
-    ajaxIsLoading: state => state.ajaxIsLoading
-  }
-})
+
+
 //请求拦截
 Axios.interceptors.request.use(config => {
-  store.commit('ajaxStar')
+  ViewUI.LoadingBar.start();  //进度条
+  store.commit('setAjaxStatus',true)
   return config;
 })
 //响应拦截
 Axios.interceptors.response.use(config => {
   //需要拦截的请求头
+  ViewUI.LoadingBar.finish();
+  store.commit('setAjaxStatus',false)
   return config
 })
 
