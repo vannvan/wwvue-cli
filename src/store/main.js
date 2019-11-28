@@ -3,7 +3,6 @@ import Vuex from 'vuex'
 import router from '@/router'
 import Axios from 'axios'
 import createPersistedState from 'vuex-persistedstate'
-import ViewUI from 'view-design';
 Vue.use(Vuex)
 
 const requireModule = require.context('./', false, /\.js$/)
@@ -40,14 +39,12 @@ router.afterEach(function (to) {
 
 //请求拦截
 Axios.interceptors.request.use(config => {
-  ViewUI.LoadingBar.start();  //进度条
   store.commit('setAjaxStatus',true)
   return config;
 })
 //响应拦截
 Axios.interceptors.response.use(config => {
   //需要拦截的请求头
-  ViewUI.LoadingBar.finish();
   store.commit('setAjaxStatus',false)
   return config
 })
