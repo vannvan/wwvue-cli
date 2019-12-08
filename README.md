@@ -37,13 +37,13 @@
 
 ## Command line deployment
 
-运用命令行完成每次版本的更新,将本地更新推送至远程仓库。
+运用命令行完成每次版本的更新,将本地更新推送至远程仓库.
 
 > npm run push init
 
 ## Command line packaging
 
-运用命令行完成每次需要交付的项目压缩文件。
+运用命令行完成每次需要交付的项目压缩文件.
 
 > npm run pack
 
@@ -51,6 +51,13 @@
 
 运用命令行生成项目目录树
 
+## Creating custom components
+
+创建一个由模板生成的自定义组件的目录及文件结构.
+
+> npm run ccc ALert
+## Creating directory tree
+生成用于分享交流或其他用途的项目目录树
 > npm run tree    //命令行查看  
 > npm run tree >>tree.txt    //生成文件  
 ### Analog interface data
@@ -58,4 +65,6 @@
 此功能算不上刚需，如不需要可在初始化完毕后删除mock目录，如有模拟数据的需要，可采取mock的方案，此方案可以避免`mock`插件的某些坑，当然任何方案都不可能是完美的，可按需选择。  
 因为可能不算刚需，故采取将此功能做独立配置，不与主项目依赖产生交集，需在mock目录下单独安装依赖,安装完依赖后，运行命令：
 > npm run serve
-## 更多便于vue项目开发的功能还在不断迭代更新！
+
+
+[版本更新记录](https://github.com/vannvan/wvue-cli/issues/1)

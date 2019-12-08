@@ -12,6 +12,11 @@ const getGitUser = require("../lib/git-user");
 
 var author = getGitUser() || ''
 
+if(!process.argv[2] || !process.argv[3] ) {
+  console.log(chalk.red('Maybe you need to initialize the project. Please input it as follows:'))
+  console.log('wwvue init project-name')
+  process.exit(1)
+}
 const promptList = [
         {
           name: 'description',
@@ -24,17 +29,25 @@ const promptList = [
           default: author
         },
         {
-          message: '压缩文件前缀:',
+          message: 'packagePrefix:',
           name: 'packPrefix',
           default: "wwvue-cli"
         }
-      ]
+]
+
+const CLI_LIST = {
+  "compress dist":"npm run pack",
+  "fast push":"npm run push init",
+  "creating directory tree":"npm run tree",
+  "creating custom components":"npm run ccc Alert"
+}
+
 program.version('1.0.7', '-v, --version')
   .command('init <name>')
   .action((name) => {
     if(!fs.existsSync(name)){
       inquirer.prompt(promptList).then((answers) => {
-        const spinner = ora('正在下载模板...');
+        const spinner = ora('Downloading template,please wait...');
         spinner.start();
         download('https://github.com:vannvan/wvue-cli#1.x', name, {clone: true}, (err) => {
           if(err){
@@ -54,16 +67,17 @@ program.version('1.0.7', '-v, --version')
               const result = handlebars.compile(content)(meta);
               fs.writeFileSync(fileName, result);
             }
-            console.log(symbols.success, chalk.green('项目初始化完成'));
-            console.log(chalk.green('压缩命令：npm run pack'));
-            console.log(chalk.green('推送命令：npm run push init'));
-            console.log(chalk.green('生成目录树：npm run tree'));
-            console.log(chalk.green('祝你开发愉快！！！'));
+            console.log(symbols.success, chalk.green('Project initialization complete'));
+            console.log('this project cli example:')
+            console.group()
+            console.table(CLI_LIST)
+            console.groupEnd()
+            console.log(chalk.green('Wish you a smooth development！！！'));
           }
         })
       })
     }else{
-      console.log(symbols.error, chalk.red('项目已存在'));
+      console.log(symbols.error, chalk.red('Project already exists'));
     }
   })
 program.parse(process.argv);
