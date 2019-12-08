@@ -10,11 +10,11 @@ export default new Router({
     },
     {
       path:'/Index',
-      component: resolve => require(['@/components/Index.vue'], resolve),
+      component: resolve => require(['@/pages/Index.vue'], resolve),
     },
     {
       path: '/HelloWorld',
-      component: resolve => require(['@/components/views/HelloWorld'], resolve),
+      component: resolve => require(['@/pages/HelloWorld'], resolve),
       meta:{
           title:'helloWorld'
       }

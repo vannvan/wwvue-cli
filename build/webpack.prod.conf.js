@@ -10,8 +10,13 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const envConfig = require('../config/env.conf')
 
-const env = require('../config/prod.env')
+
+// const env = require('../config/prod.env')
+
+const currentEnv = process.argv[2] || 'prod'  //如果命令行没有输入env将按prod进行打包
+const env = envConfig[currentEnv]
 
 const  Version = new Date().getTime();  //用时间戳区分版本号
 
@@ -40,8 +45,7 @@ const webpackConfig = merge(baseWebpackConfig, {
       uglifyOptions: {
         compress: {
           warnings: false,
-          drop_console: true,//console
-          pure_funcs: ['console.log']//移除console
+          // drop_console: true,//移除console
         }
       },
       sourceMap: config.build.productionSourceMap,

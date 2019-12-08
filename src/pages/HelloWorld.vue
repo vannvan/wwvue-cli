@@ -1,9 +1,5 @@
 <template>
   <div class="hello">
-    <h1>全局sass样式变量：{{msg}}</h1>
-    <h2>{{params}}</h2>
-    <h3>全局过滤方法：{{date|fdate}}</h3>
-    <hr>
     <div class="iconBox">
       <div class="iconItem" v-for="(item, index) in iconList">
         <w-icon :class="item"  :style="{color:RandomColor()}"></w-icon>
@@ -34,14 +30,12 @@ export default {
   methods: {
     getUserInfo() {
       let datas = {
-        token:''
+        token:'',
+        user_id:''
       }
-      // URL_CONFIG 来自mixin
-      this.$http.post(this.URL_CONFIG.getUserInfo,datas)
+      this.$API.User.getUserInfo(datas)
       .then(res =>{
         console.log(res)
-      }).catch(error =>{
-        console.log(error)
       })
     }
   }

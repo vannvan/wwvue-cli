@@ -1,7 +1,7 @@
 'use strict'
 require('./check-versions')()
 
-process.env.NODE_ENV = 'production'
+// process.env.NODE_ENV = 'production'
 
 const ora = require('ora')
 const rm = require('rimraf')
@@ -10,8 +10,17 @@ const chalk = require('chalk')
 const webpack = require('webpack')
 const config = require('../config')
 const webpackConfig = require('./webpack.prod.conf')
+const envConfig = require('../config/env.conf')
 
-const spinner = ora('building for production...')
+if(process.argv[2] in envConfig == false) {
+  console.log(chalk.red('检测到命令行env为空或无对应配置，将以prod环境配置进行打包'))
+  process.env.ENV_CONFIG = 'prod'
+//   process.exit(1)
+}
+
+const currentEnv = process.argv[2] || process.env.ENV_CONFIG
+const spinner = ora('building for ' + currentEnv + ' of production...')
+
 spinner.start()
 
 rm(path.join(config.build.assetsRoot, config.build.assetsSubDirectory), err => {
