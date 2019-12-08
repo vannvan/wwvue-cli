@@ -17,9 +17,11 @@ Vue.use(directive)
 import WUI from '../packages/index'
 Vue.use(WUI)
 
-Vue.config.productionTip = false
-Vue.prototype.$http = axios;
 
+Vue.config.productionTip = false
+
+import API_CONFIG from '@/api/index'
+Vue.prototype.$API = API_CONFIG
 
 /* eslint-disable no-new */
 new Vue({

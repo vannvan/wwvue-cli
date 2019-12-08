@@ -7,7 +7,7 @@
 const fs = require("fs");
 const chalk = require('chalk');  //chalk组件建议安装在全局
 const path = require('path')
-const componentName = process.argv[2]   //组件名
+let componentName = process.argv[2]   //组件名
 
 if(!componentName) {
 	console.log(chalk.red('组件名不可缺省'))
@@ -64,7 +64,7 @@ const touchComponent = (componentName,template) => {
 const getTemplateType = (fileType) => {
 		//读取模板，将模板中的componentName替换为当前组件名
 		try{
-			var templateModal =  fs.readFileSync("componentModal/Component."+fileType, "utf-8", function(error, data) {
+			var templateModal =  fs.readFileSync("build/componentModal/Component."+fileType, "utf-8", function(error, data) {
 			  if (error) return console.log(chalk.red("读取文件失败" + error.message));
 			});
 			var template = templateModal.toString()
