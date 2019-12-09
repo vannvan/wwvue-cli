@@ -16,7 +16,7 @@
               <button @click="locationPage('https://github.com/vannvan/wvue-cli')">查看源码</button>
               <button @click='locationPage("https://github.com/vannvan/wwvue-cli/issues/1")'>更新记录</button>
             </div>
-            
+
           </div>
           <div class="features" id="特性">
             <div class="title">项目特性</div>
@@ -145,7 +145,7 @@ h2{
           // float: left
       }
     }
-    
+
   }
   .features{
     background: #00649F;
@@ -160,7 +160,6 @@ h2{
     }
     .list{
       display: flex;
-      // padding-left: 10%;
       .item-col-3{
         width: 30%;
         margin:0 5%;
