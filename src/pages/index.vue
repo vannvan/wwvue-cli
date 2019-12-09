@@ -12,7 +12,11 @@
           <div class="intro" id="介绍">
             <h1>Vue.js最佳实践</h1>
             <h2>轻松搭建 无需配置 快速上手</h2>
-            <span class="cli-btn" @click="github()">查看源码</span>
+            <div class="btn-item">
+              <button @click="locationPage('https://github.com/vannvan/wvue-cli')">查看源码</button>
+              <button @click='locationPage("https://github.com/vannvan/wwvue-cli/issues/1")'>更新记录</button>
+            </div>
+            
           </div>
           <div class="features" id="特性">
             <div class="title">项目特性</div>
@@ -65,8 +69,8 @@
 <script>
 export default {
   methods: {
-    github() {
-      window.location.href="https://github.com/vannvan/wvue-cli"
+    locationPage(location) {
+      window.open(location)
     }
   }
 }
@@ -120,17 +124,28 @@ h2{
       text-align: center;
       margin-top: 35px
     }
-    .cli-btn{
-      width: 150px;
+    .btn-item{
+      width: 400px;
       height: 50px;
-      margin: 25px auto;
-      display: block;
-      text-align: center;
-      line-height: 50px;
-      border:#f6f6f6 solid 1px;
-      border-radius: 5px;
-      cursor: pointer;
+      margin:0 auto;
+      display: flex;
+      justify-content: space-between;
+      margin:25px auto;
+        button{
+          width: 150px;
+          height: 50px;
+          // margin: 25px auto;
+          display: block;
+          text-align: center;
+          line-height: 50px;
+          border:#f6f6f6 solid 1px;
+          border-radius: 5px;
+          cursor: pointer;
+          background: none
+          // float: left
+      }
     }
+    
   }
   .features{
     background: #00649F;
