@@ -1,5 +1,5 @@
 {
-  "name": "{{name}}",
+  "name": "name",
   "version": "1.1.0",
   "description": "{{description}}",
   "author": "{{author}}",

@@ -188,9 +188,10 @@ h2{
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
+      width: 90%;
+      margin:0 auto;
       .item-col-2{
         width: 36%;
-        margin:25px 5%;
         height: 180px;
         padding:35px;
         p{
