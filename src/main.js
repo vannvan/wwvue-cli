@@ -17,6 +17,9 @@ Vue.use(directive)
 import WUI from '../packages/index'
 Vue.use(WUI)
 
+import '@/utils/componentRegister.js'
+
+
 
 Vue.config.productionTip = false
 
@@ -28,6 +31,8 @@ new Vue({
   el: '#app',
   router,
   store,
-  components: { App },
+  components: {
+    App
+  },
   template: '<App/>'
 })

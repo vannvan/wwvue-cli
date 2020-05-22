@@ -1,10 +1,10 @@
 //用户信息
 export default {
   state: {
-    userInfo:{}
+    userInfo: {}
   },
   mutations: {
-    setUserInfo (state, newV) {
+    setUserInfo(state, newV) {
       state.userInfo = newV;
     },
   }

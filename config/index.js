@@ -5,7 +5,8 @@
 const path = require('path')
 const Ip = require('./get-ip')
 
-var localIP = Ip.getlocalIp()
+var localIP = Ip.getWlanIp() || '127.0.0.1'
+
 
 module.exports = {
   dev: {
@@ -24,7 +25,7 @@ module.exports = {
     },
 
     // Various Dev Server settings
-    host: localIP[0], // can be overwritten by process.env.HOST
+    host: localIP, // can be overwritten by process.env.HOST
     port: 8082, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
     autoOpenBrowser: true,
     errorOverlay: true,
