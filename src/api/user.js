@@ -3,5 +3,5 @@ import {
   post
 } from './http'
 export default {
-  getUserInfo: (p) => get('/user', p), //获取用户信息
+  getUserInfo: (p) => get('/v1/user-list', p), //获取用户信息
 }

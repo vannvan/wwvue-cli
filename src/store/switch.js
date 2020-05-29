@@ -1,14 +1,14 @@
 //请求及页面切换
 export default {
-  state:{
-    ajaxStart:false,
-    pageSwitch:false
+  state: {
+    axiosStart: false,
+    pageSwitch: false
   },
-  mutations:{
-    setAjaxStatus(state,newV) {
-      state.ajaxStart = newV
+  mutations: {
+    setAxiosStatus(state, newV) {
+      state.axiosStart = newV
     },
-    setPageSwitch(state,newV) {
+    setPageSwitch(state, newV) {
       state.pageSwitch = newV
     }
   }

@@ -21,10 +21,11 @@ export default {
       iconList: iconList
     };
   },
+
   mounted() {
     this.getUserInfo();
     //这里使用一下定义在mixin中的方法
-    console.log(this.formatTime(this.date));
+    // console.log(this.formatTime(this.date));
   },
   methods: {
     getUserInfo() {

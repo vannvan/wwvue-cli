@@ -3,7 +3,6 @@
  */
 import axios from 'axios';
 import QS from 'qs';
-// import store from '../store/index'
 
 /*
  * 示例：一般假设API配置区分开发环境，测试环境，预上线环境，生产环境等
@@ -24,6 +23,7 @@ axios.defaults.timeout = 10000;
 // post请求头
 // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
 
+
 // 请求拦截器
 axios.interceptors.request.use(
   config => {
@@ -34,7 +34,7 @@ axios.interceptors.request.use(
     return config;
   },
   error => {
-    return Promise.error(error);
+    return Promise.reject(err)
   })
 
 // 响应拦截器
@@ -48,7 +48,9 @@ axios.interceptors.response.use(
   },
   // 服务器状态码不是200的情况
   error => {
-
+    if (error.message === '路由跳转取消请求') { // 判断是否为路由跳转取消网络请求
+      console.log('路由跳转取消请求' + error)
+    }
   }
 );
 /**

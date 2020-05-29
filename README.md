@@ -66,3 +66,78 @@ PS:此次改造后的打包命令使用方式如下：
 > npm run build test/prod/prepro  //无参数将默认打包为prod
 
 具体改造方式参考[vue不同生产环境打包配置方案](https://github.com/vannvan/archives/blob/master/VUE/vue%E4%B8%8D%E5%90%8C%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E6%89%93%E5%8C%85%E9%85%8D%E7%BD%AE%E6%96%B9%E6%A1%88.md)
+
+
+
+### 2020-05-29 版本更新说明
+由于最近在社区看到关于`vue.js`中关于`axios`封装的相关文章，特意回顾了一下本项目在该方面的封装形式，意识到还有一个**取消请求**的刚需并未涉及，而官方文档在该方面也没有明确的实例，网上很多相关的实例也是寥寥草草，故因此将现成的方案分享出来供大家交流学习。
+看云上关于取消请求的实例是这样的：
+```js
+var CancelToken = axios.CancelToken;
+var source = CancelToken.source();
+
+axios.get('/user/12345', {
+  cancelToken: source.token
+}).catch(function(thrown) {
+  if (axios.isCancel(thrown)) {
+    console.log('Request canceled', thrown.message);
+  } else {
+    // 处理错误
+  }
+});
+
+// 取消请求（message 参数是可选的）
+source.cancel('Operation canceled by the user.');
+```
+显然像以上这样写是不合理的，取消多个请求以及分场景取消请求采用这种方式是极其不优雅的，所以我们需要通过请求拦截来实现多样化场景。  
+通常我们需要切换页面则取消上一个页面为完成请求
+
+首先使用vuex记录一个页面的请求队列，并实现清除请求队列
+
+```js
+//记录取消请求操作
+store.registerModule('requestAction', {
+  state: {
+    cancelRequestQueue: []
+  },
+  mutations: {
+    pushRequest: (state, src) => {
+      state.cancelRequestQueue.push(src.cancelToken)
+    },
+    clearRequest: ({
+      cancelRequestQueue
+    }) => {
+      cancelRequestQueue.forEach(item => {
+        item('路由跳转取消请求')
+      })
+      cancelRequestQueue = []
+    }
+  }
+})
+```
+
+
+然后我们需要在请求拦截中配置如下
+```js
+//请求拦截
+Axios.interceptors.request.use(config => {
+  config.cancelToken = new Axios.CancelToken((cancel) => {
+    store.commit('pushRequest', {
+      cancelToken: cancel
+    })
+  })
+  return config;
+})
+```
+
+最后只需要在router发生切换时清除请求队列即可
+```js
+router.beforeEach(function (to, from, next) {
+  store.commit('clearRequest') // 取消请求,非常关键
+  next()
+})
+```
+如果配置成功，可以在页面中来回切换，可以到`status`为canceled,表示已完成取消请求。
+![](https://ae01.alicdn.com/kf/He96a8e92b8e14094be790b923b7b4692Q.png)
+
+具体源码可以在store/main.js中查看，由于这里操作不算复杂就没有把功能进行拆分
