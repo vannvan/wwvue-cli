@@ -1,22 +1,21 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import routes from './routes'
+
+
 Vue.use(Router)
 
-export default new Router({
-  routes: [{
-      path: '*',
-      redirect: '/Index'
-    },
-    {
-      path: '/Index',
-      component: resolve => require(['@/pages/Index.vue'], resolve),
-    },
-    {
-      path: '/HelloWorld',
-      component: resolve => require(['@/pages/HelloWorld'], resolve),
-      meta: {
-        title: 'helloWorld'
-      }
-    }
-  ]
+const router = new Router({
+    base: '/',
+    routes: routes,
+    mode: 'history'
 })
+
+
+
+router.afterEach(() => {
+    // iView.LoadingBar.finish()
+    window.scrollTo(0, 0)
+})
+
+export default router

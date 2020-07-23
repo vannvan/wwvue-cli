@@ -1,18 +1,14 @@
 <template>
   <div id="app">
-    <router-view/>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
+// test
 export default {
-  name: 'App'
-}
+  name: "App",
+};
 </script>
 
-<style>
-#app{
-  /* text-align: center; */
-  /* margin-top: 50px; */
-}
-</style>
+<style></style>

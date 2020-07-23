@@ -1,70 +1,58 @@
 <template>
   <div class="hello">
-    <div class="iconBox">
-      <div class="iconItem" v-for="(item, index) in iconList">
-        <w-icon :class="item" :style="{color:RandomColor()}"></w-icon>
-        <p>{{item}}</p>
-      </div>
-    </div>
+    <h1>{{ msg }}</h1>
+    <p>
+      For a guide and recipes on how to configure / customize this project,<br>
+      check out the
+      <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
+    </p>
+    <h3>Installed CLI Plugins</h3>
+    <ul>
+      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
+      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">eslint</a></li>
+    </ul>
+    <h3>Essential Links</h3>
+    <ul>
+      <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
+      <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
+      <li><a href="https://chat.vuejs.org" target="_blank" rel="noopener">Community Chat</a></li>
+      <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
+      <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
+    </ul>
+    <h3>Ecosystem</h3>
+    <ul>
+      <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
+      <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a></li>
+      <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank" rel="noopener">vue-devtools</a></li>
+      <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
+      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
+    </ul>
   </div>
 </template>
 
 <script>
-import iconList from "@/assets/js/icon.json";
 export default {
-  name: "HelloWorld",
-  data() {
-    return {
-      msg: "Welcome To Your Vue.js App",
-      date: 1558849079,
-      params: this.$route.query,
-      iconList: iconList
-    };
-  },
-
-  mounted() {
-    this.getUserInfo();
-    //这里使用一下定义在mixin中的方法
-    // console.log(this.formatTime(this.date));
-  },
-  methods: {
-    getUserInfo() {
-      let datas = {
-        token: "",
-        user_id: ""
-      };
-      this.$API.User.getUserInfo(datas).then(res => {
-        console.log(res);
-      });
-    }
+  name: 'HelloWorld',
+  props: {
+    msg: String
   }
-};
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="scss">
-.iconBox {
-  width: 80%;
-  height: auto;
-  margin: 0 auto;
-  .iconItem {
-    height: 64px;
-    width: 120px;
-    padding: 10px;
-    margin: 5px;
-    float: left;
-    i {
-      font-size: 24px;
-    }
-    p {
-      font-size: 10px;
-    }
-  }
+<style scoped>
+h3 {
+  margin: 40px 0 0;
 }
-hr {
-  width: 100%;
-  height: 0;
-  align: center;
-  border: 1px solid #f00;
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+li {
+  display: inline-block;
+  margin: 0 10px;
+}
+a {
+  color: #42b983;
 }
 </style>
