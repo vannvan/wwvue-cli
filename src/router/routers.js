@@ -1,8 +1,8 @@
 export default [{
-    path: "HelloWorld",
+    path: "/HelloWorld",
+    name: "HelloWorld",
     meta: {
         title: 'HelloWorld'
     },
     component: resolve => require(['../pages/HelloWorld.vue'], resolve),
-    // component: () => import('../pages/HelloWorld.vue')
 }]
