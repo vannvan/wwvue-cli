@@ -1,13 +1,18 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import routes from './routers'
+// import routes from './routers'
+import routerList from './auto-register-route'
+console.log(routerList);
 
+
+// console.log(routes);
 
 Vue.use(Router)
 
+
 const router = new Router({
     base: '/',
-    routes: routes,
+    routes: routerList,
     mode: 'history'
 })
 
