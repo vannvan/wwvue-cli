@@ -1,9 +1,14 @@
+import routerList from './auto-register-route'
 export default [{
-    path: "/HelloWorld",
-    name: "HelloWorld",
+    path: "/login",
+    name: "Login",
     meta: {
-        title: 'HelloWorld',
-        keepAlive: true
+        title: '登录',
     },
-    component: resolve => require(['../pages/HelloWorld.vue'], resolve),
+    component: resolve => require(['../pages/Login.vue'], resolve),
+}, {
+    path: '/',
+    redirect: '/home',
+    component: resolve => require(['../layout/Layout.vue'], resolve),
+    children: routerList
 }]

@@ -15,7 +15,6 @@
       }
   })
 
-
   const store = new Vuex.Store({
       // 用不同的模块管理vuex存储数据
       modules: modules,
