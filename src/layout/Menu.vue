@@ -108,6 +108,11 @@ export default {
     handleClick(name) {
       console.log(name);
     }
+  },
+  mounted() {
+    this.$nextTick(() => {
+      this.$store.commit("setActiveMenu", this.$route.path);
+    });
   }
 };
 </script>

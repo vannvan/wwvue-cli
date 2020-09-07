@@ -23,14 +23,24 @@ export default {
             ]
         },
         {
-            name: 'example',
+            name: '组件',
             path: '/example',
             icon: 'md-cloud',
             id: 5,
             pid: 0,
-            children: [
-
-            ]
+            children: [{
+                name: "EchartsPage",
+                path: '/example/echartspage',
+                icon: 'ios-stats',
+                id: 51,
+                pid: 5
+            }, {
+                name: 'upload',
+                path: '/example/upload',
+                icon: "ios-document",
+                id: 52,
+                pid: 5
+            }]
         }
     ],
     'admin': [

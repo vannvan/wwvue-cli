@@ -5,7 +5,7 @@
     </span>
     <span v-for="item in reverseBreadCrumbs" :key="item.id" :style="{}">
       <Icon :type="item.icon" />
-      {{item.title}}
+      {{item.name}}
     </span>
   </div>
 </template>

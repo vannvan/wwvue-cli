@@ -97,7 +97,9 @@ export default {
   .content-con {
     padding: 10px;
     .page-card {
-      min-height: calc(100vh - 84px);
+      height: calc(100vh - 84px);
+      overflow-x: hidden;
+      overflow-y: auto;
     }
   }
 }
