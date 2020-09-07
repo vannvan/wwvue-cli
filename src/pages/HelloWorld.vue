@@ -5,7 +5,7 @@
 </template>
 
 <script>
-const { User } = require("@/api").default;
+const { User } = require("@/api").User;
 import { mapState } from "vuex";
 export default {
   name: "HelloWorld",
