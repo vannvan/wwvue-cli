@@ -2,11 +2,13 @@ import axios from 'axios'
 import API_CONFIG from './api.conf'
 import QS from 'qs';
 import ERROR_CONF from './error.conf'
+import ViewUI from 'view-design';
+
 
 
 const Axios = axios.create({
     baseURL: API_CONFIG[process.env.NODE_ENV], // api的base_url
-    timeout: 60000 // 设置请求超时时间30s
+    timeout: 60000 // 设置请求超时时间
 })
 
 
@@ -74,6 +76,7 @@ export function post(url, params) {
             })
             .catch(err => {
                 let { status } = err.response
+                ViewUI.Message.error({ background: true, content: ERROR_CONF[status] })
                 console.log(ERROR_CONF[status]) // 此处采用message组件提示对应的错误信息
                 reject(err)
             })

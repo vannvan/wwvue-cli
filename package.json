@@ -3,6 +3,7 @@
     "version": "0.1.0",
     "private": true,
     "scripts": {
+        "ccc": "node cli/create-custom-component",
         "serve": "vue-cli-service serve --open",
         "build": "vue-cli-service build --mode production && node cli/write",
         "lint": "vue-cli-service lint",

@@ -63,7 +63,7 @@ const touchComponent = (componentName, template) => {
 const getTemplateType = (fileType) => {
     //读取模板，将模板中的componentName替换为当前组件名
     try {
-        var templateModal = fs.readFileSync("compTemplate/Component." + fileType, "utf-8", function(error) {
+        var templateModal = fs.readFileSync(resolve("./cli/compTemplate/Component." + fileType), "utf-8", function(error) {
             if (error) return console.log(chalk.red("读取文件失败" + error.message));
         });
         var template = templateModal.toString()

@@ -18,15 +18,15 @@
       <template v-for="item in list">
         <re-submenu
           v-if="item.children"
-          :key="`menu_${item.name}`"
-          :name="item.name"
+          :key="`menu_${item[pathKey]}`"
+          :name="item[pathKey]"
           :parent="item"
         >
           <menu-item></menu-item>
         </re-submenu>
-        <menu-item v-else :key="`menu_${item.name}`" :name="item.name">
+        <menu-item v-else :key="`menu_${item[pathKey]}`" :name="item[pathKey]">
           <Icon :type="item.icon" />
-          {{ item.title }}
+          {{ item[nameKey] }}
         </menu-item>
       </template>
     </Menu>
@@ -37,11 +37,17 @@
           v-if="item.children"
           icon-color="#fff"
           :show-title="false"
-          :key="`drop_${item.name}`"
+          :key="`drop_${item[pathKey]}`"
           :parent="item"
         ></re-dropdown>
-        <Tooltip v-else transfer :content="item.title" placement="right" :key="`drop_${item.name}`">
-          <span @click="handleClick(item.name)" class="drop-menu-span">
+        <Tooltip
+          v-else
+          transfer
+          :content="item[nameKey]"
+          placement="right"
+          :key="`drop_${item[pathKey]}`"
+        >
+          <span @click="handleClick(item[pathKey])" class="drop-menu-span">
             <Icon :type="item.icon" color="#fff" :size="30" />
           </span>
         </Tooltip>
@@ -55,10 +61,12 @@ import ReDropdown from "./ReDropDown";
 import { mapState } from "vuex";
 export default {
   name: "SideMenu",
+
   components: {
     ReSubmenu,
     ReDropdown
   },
+
   props: {
     collapsed: {
       type: Boolean,
@@ -67,14 +75,26 @@ export default {
     list: {
       type: Array,
       default: () => []
+    },
+    //菜单名称属性
+    nameKey: {
+      type: String,
+      default: "name"
+    },
+    //菜单路径属性
+    pathKey: {
+      type: String,
+      default: "path"
     }
   },
+
   computed: {
     ...mapState({
       opendMenu: state => state.auth.opendMenu,
       activeMenu: state => state.auth.activeMenu
     })
   },
+
   methods: {
     handleSelect(name) {
       this.$store.commit("setActiveMenu", name);

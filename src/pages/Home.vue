@@ -3,7 +3,20 @@
 </template>
 
 <script>
-export default {};
+const { getUserList } = require("@/api").User;
+export default {
+  data() {
+    return {
+      //
+    };
+  },
+  mounted() {
+    getUserList().then(res => {
+      console.log(res);
+    });
+  },
+  methods: {}
+};
 </script>
 
 <style>

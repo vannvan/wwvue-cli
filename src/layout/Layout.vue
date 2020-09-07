@@ -7,15 +7,8 @@
       <Layout>
         <Header class="header-wrapper">
           <Icon type="md-menu" :size="32" @click.native="handleCollapsed" :class="triggerClasses" />
-          <div class="bread-crumbs">
-            <span style="cursor:pointer" class="home">
-              <Icon type="md-home" />首页
-            </span>
-            <span v-for="item in reverseBreadCrumbs" :key="item.id" :style="{}">
-              <Icon :type="item.icon" />
-              {{item.title}}
-            </span>
-          </div>
+          <!--面包屑-->
+          <BreadCrumb />
           <div class="avatar">
             <Dropdown trigger="click">
               <Avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" />
@@ -37,17 +30,23 @@
 </template>
 <script>
 import SideMenu from "./Menu";
+import BreadCrumb from "./BreadCrumb";
 import Menu from "../assets/menu.js";
 import { getLeftMenuList } from "../utils/auth";
 import { mapState } from "vuex";
-import { breadCrumbsList } from "../utils";
 export default {
+  components: {
+    SideMenu,
+    BreadCrumb
+  },
+
   data() {
     return {
       collapsed: false,
       menuList: getLeftMenuList(Menu["superAdmin"])
     };
   },
+
   computed: {
     triggerClasses() {
       return ["trigger-icon", this.collapsed ? "rotate" : ""];
@@ -56,41 +55,13 @@ export default {
       menuListStore: state => state.auth.menuList,
       activeMenu: state => state.auth.activeMenu,
       breadCrumbs: state => state.auth.breadCrumbs
-    }),
-    //反转面包屑顺序
-    reverseBreadCrumbs() {
-      return this.$route.path == "/home"
-        ? []
-        : Array.prototype.reverse.call(
-            JSON.parse(JSON.stringify(this.breadCrumbs))
-          );
-    },
-    //是否链接
-    isLink() {
-      return path => {
-        return path.match(/\//g).length > 1;
-      };
-    },
-    //是否当前页面
-    isCurrentPage() {
-      return path => {
-        return this.$route.path == path;
-      };
-    }
+    })
   },
-  watch: {
-    activeMenu: {
-      handler(newVal) {
-        this.$store.commit("setBreadCrumbs", breadCrumbsList(newVal));
-      }
-    }
-  },
-  components: {
-    SideMenu
-  },
+
   mounted() {
     this.$store.commit("setAuthMenuList", this.menuList);
   },
+
   methods: {
     handleCollapsed() {
       this.collapsed = !this.collapsed;
@@ -117,25 +88,7 @@ export default {
         transition: transform 0.3s ease;
       }
     }
-    .bread-crumbs {
-      margin-left: 40px;
-      span {
-        margin-right: 15px;
-        display: inline-block;
-        &.home:hover {
-          color: $primaryColor;
-        }
-        i {
-          margin-right: 5px;
-        }
-        //排除最后一项
-        &:not(:last-child)::after {
-          content: "/";
-          margin-left: 10px;
-          color: #999;
-        }
-      }
-    }
+
     .avatar {
       margin-left: auto;
       cursor: pointer;

@@ -13,4 +13,4 @@ requireModule.keys().forEach(fileName => {
 })
 
 
-export default { ...APILIST }
+module.exports = APILIST

@@ -5,9 +5,13 @@
 <script>
 export default {
   name: "ComponentName",
-  props: {},
+  props: {
+    //
+  },
   data() {
-    return {};
+    return {
+      //
+    };
   }
 };
 </script>

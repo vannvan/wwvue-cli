@@ -88,13 +88,13 @@ export const flatMenu = () => {
 
 
 /**
- * 生成面包屑列表
+ * 生成面包屑列表,
+ * pathKey，idKey均可根据实际需要进行调整
  *
  * @param {*} currentMenuPath
  * @return {*} 
  */
-export const breadCrumbsList = (currentMenuPath) => {
-    const currentMenuId = flatMenu().find(el => el.name == currentMenuPath).id
-    console.log(currentMenuId, 'currentMenuId');
+export const breadCrumbsList = (currentMenuPath, pathKey = "path", idKey = "id") => {
+    const currentMenuId = flatMenu().find(el => el[pathKey] == currentMenuPath)[idKey]
     return traceParentNode(currentMenuId, store.state.auth.menuList)
 }
