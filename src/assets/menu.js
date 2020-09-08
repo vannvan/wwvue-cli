@@ -35,7 +35,7 @@ export default {
                 id: 51,
                 pid: 5
             }, {
-                name: 'upload',
+                name: 'Upload',
                 path: '/example/upload',
                 icon: "ios-document",
                 id: 52,

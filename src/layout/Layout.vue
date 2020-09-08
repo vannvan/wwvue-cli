@@ -96,10 +96,14 @@ export default {
   }
   .content-con {
     padding: 10px;
+    background: #fff;
     .page-card {
       height: calc(100vh - 84px);
       overflow-x: hidden;
       overflow-y: auto;
+      &.ivu-card-shadow {
+        background: $themeLayoutColor !important;
+      }
     }
   }
 }

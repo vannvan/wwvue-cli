@@ -98,3 +98,40 @@ export const breadCrumbsList = (currentMenuPath, pathKey = "path", idKey = "id")
     const currentMenuId = flatMenu().find(el => el[pathKey] == currentMenuPath)[idKey]
     return traceParentNode(currentMenuId, store.state.auth.menuList)
 }
+
+
+/** 
+ * 获取文件后缀名
+ */
+export const fileExtension = (fileName) => {
+    return fileName.substring(fileName.lastIndexOf('.') + 1);
+}
+
+/**
+ * 判断数据类型
+ * 原则上是所有类型都可判断，但常用的就只有以下类型，故可选类型只限制了如下格式
+ * @param {any*} data
+ * @param {String*} type  
+ * @return {*} 
+ */
+export const isType = (data, type) => {
+    const typeOpts = ['undefined', 'null', 'string', 'number', 'boolean', 'array', 'object', 'symbol', 'date', 'regexp', 'function']
+    if (!typeOpts.includes(type)) {
+        console.error('type属性可选值为', typeOpts.join())
+    }
+    const dataType = Object.prototype.toString.call(data).replace(/\[object /g, "").replace(/\]/g, "").toLowerCase();
+    return type ? dataType === type : dataType;
+}
+
+
+
+/**
+ * 图片文件转为base64 
+ * @param {*} img
+ * @return {*} 
+ */
+export const image2Base64 = (img, callback) => {
+    const reader = new FileReader()
+    reader.addEventListener('load', () => callback(reader.result))
+    reader.readAsDataURL(img)
+}

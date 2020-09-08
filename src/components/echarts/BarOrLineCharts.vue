@@ -1,3 +1,4 @@
+// 柱状图或折线图
 <template>
   <div ref="BarOrLineCharts" :style="{ height: height }" style="width:100%"></div>
 </template>
@@ -34,7 +35,7 @@ export default {
       let charts = echarts.init(this.$refs.BarOrLineCharts);
       let _this = this;
       var option = {
-        backgroundColor: "#BAE2BE",
+        backgroundColor: "#fff",
         //提示框
         tooltip: {
           trigger: "axis"
@@ -52,6 +53,7 @@ export default {
         },
         //图例
         legend: {
+          show: false,
           icon: "rect",
           itemGap: 16,
           itemWidth: 18,
