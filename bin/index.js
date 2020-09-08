@@ -10,10 +10,18 @@ const chalk = require('chalk');
 const symbols = require('log-symbols');
 const shell = require("shelljs");
 const getGitUser = require("../lib/git-user");
+const outPutList = require('../lib/output-list')
+const outPutHelp = require('../lib/output-help')
+const outPutCliList = require('../lib/outout-cli-list')
 
+outPutCliList()
+return
 var author = getGitUser() || ''
+if (process.argv.length <= 2) {
+    outPutHelp()
+}
 
-if (!process.argv[2] || !process.argv[3]) {
+if (process.argv[2] == 'init' && !process.argv[3]) {
     console.log(chalk.red('Maybe you need to initialize the project. Please input it as follows:'))
     console.log('wwvue init project-name')
     process.exit(1)
@@ -29,7 +37,7 @@ const promptList = [{
         default: author
     },
     {
-        message: 'packagePrefix:',
+        message: 'PackagePrefix:',
         name: 'packPrefix',
         default: "wwvue-cli"
     },
@@ -43,6 +51,10 @@ const promptList = [{
                 value: "simple"
             },
             {
+                key: 'iview',
+                value: 'iview-template'
+            },
+            {
                 key: "1.x",
                 value: "1.x"
             }
@@ -50,14 +62,10 @@ const promptList = [{
     }
 ]
 
-const CLI_LIST = {
-    "compress dist": "npm run pack",
-    "fast push": "npm run push init",
-    "creating directory tree": "npm run tree",
-    "creating custom components": "npm run ccc Alert"
-}
 
-program.version('1.0.7', '-v, --version')
+
+
+program.version('wwvue-cli@1.2.1', '-v, --version')
     .command('init <name>')
     .action((name) => {
         if (!fs.existsSync(name)) {
@@ -84,9 +92,7 @@ program.version('1.0.7', '-v, --version')
                         }
                         console.log(symbols.success, chalk.green('Project initialization complete'));
                         console.log('this project cli example:')
-                        console.group()
-                        console.table(CLI_LIST)
-                        console.groupEnd()
+                        outPutCliList()
                         console.log(chalk.green('Wish you a smooth development！！！'));
                     }
                 })
@@ -95,4 +101,16 @@ program.version('1.0.7', '-v, --version')
             console.log(symbols.error, chalk.red('Project already exists'));
         }
     })
+
+program
+    .command('list')
+    .alias('ls')
+    .description('View all available templates')
+    .action(outPutList)
+program
+    .command('help')
+    .alias('h')
+    .description('View help')
+    .action(outPutHelp)
+
 program.parse(process.argv);

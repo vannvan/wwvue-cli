@@ -1,6 +1,6 @@
 {
   "name": "wwvue-cli",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "A scaffolding based on vue-cli",
   "bin": {
     "wwvue": "bin/index.js"
