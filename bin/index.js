@@ -13,9 +13,8 @@ const getGitUser = require("../lib/git-user");
 const outPutList = require('../lib/output-list')
 const outPutHelp = require('../lib/output-help')
 const outPutCliList = require('../lib/outout-cli-list')
+const pjson = require('../package.json');
 
-outPutCliList()
-return
 var author = getGitUser() || ''
 if (process.argv.length <= 2) {
     outPutHelp()
@@ -65,7 +64,7 @@ const promptList = [{
 
 
 
-program.version('wwvue-cli@1.2.1', '-v, --version')
+program.version(`wwvue-cli${pjson.version}`, '-v, --version')
     .command('init <name>')
     .action((name) => {
         if (!fs.existsSync(name)) {
