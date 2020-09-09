@@ -6,6 +6,7 @@
 <script>
 import echarts from "../../utils/echarts";
 export default {
+  name: "PieCharts",
   props: {
     height: {
       type: String,

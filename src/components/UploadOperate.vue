@@ -24,6 +24,7 @@ const ACCEPT_OPTS = {
   zip: ["zip"]
 };
 export default {
+  name: "UploadOperate",
   props: {
     //文件上传地址
     action: {

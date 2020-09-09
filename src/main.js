@@ -5,6 +5,10 @@ import store from './store/index'
 import ViewUI from 'view-design';
 import 'view-design/dist/styles/iview.css';
 
+
+import directive from './directives'
+Vue.use(directive)
+
 Vue.use(ViewUI);
 
 

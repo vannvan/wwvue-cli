@@ -29,18 +29,33 @@ export default {
             id: 5,
             pid: 0,
             children: [{
-                name: "EchartsPage",
-                path: '/example/echartspage',
-                icon: 'ios-stats',
-                id: 51,
-                pid: 5
-            }, {
-                name: 'Upload',
-                path: '/example/upload',
-                icon: "ios-document",
-                id: 52,
-                pid: 5
-            }]
+                    name: "EchartsPage",
+                    path: '/example/echartspage',
+                    icon: 'ios-stats',
+                    id: 51,
+                    pid: 5
+                }, {
+                    name: 'Upload',
+                    path: '/example/upload',
+                    icon: "ios-document",
+                    id: 52,
+                    pid: 5
+                },
+                {
+                    name: "Table",
+                    path: '/example/table',
+                    icon: 'ios-list-box-outline',
+                    id: 53,
+                    pid: 5
+                },
+                {
+                    name: "CountTo",
+                    path: '/example/countto',
+                    icon: 'ios-pulse',
+                    id: 54,
+                    pid: 5
+                }
+            ]
         }
     ],
     'admin': [

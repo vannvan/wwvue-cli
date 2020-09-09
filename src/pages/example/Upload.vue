@@ -7,10 +7,9 @@
       <template slot="desc">
         <pre>
     1. 此组件相较于iview上传组件较为轻量，可在项目内根据实际需要对组件进行任意扩展，定制化需求开发成本较低
-    2.一般上传的两种步骤：
+    2.一般上传的两种步骤： <small v-warn>step默认为1</small>
         a.按钮点击直接上传，除file之外参数可选，
         b.选择后可重新选择，需手动触发上传操作，也就是调取上传接口，除file之外参数可选，
-      step默认为1
     3.上传完毕只有无论成功失败均为finish，可根据业务需求在页面内进行不同的处理，避免过多繁杂的方法
     </pre>
       </template>
@@ -31,7 +30,13 @@
       <h2>自定义图片选择(一步)</h2>
       <div>
         <UploadOperate action="/api/uploadFile" @on-change="handleChange" :step="1">
-          <img src="../../assets/image/img.png" slot="action" style="width:100px;cursor:pointer" />
+          <div
+            style="padding: 20px 60px;cursor:pointer;border-radius:5px;border:1px solid #ccc;text-align:center"
+            slot="action"
+          >
+            <Icon type="ios-cloud-upload" size="52" style="color: #3399ff"></Icon>
+            <p>可以自定义点击区域触发选择文件操作</p>
+          </div>
         </UploadOperate>
       </div>
 
@@ -82,8 +87,5 @@ export default {
 <style lang="scss">
 .upload-wrap {
   margin-top: 15px;
-  h2 {
-    line-height: 60px;
-  }
 }
 </style>

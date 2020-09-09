@@ -14,7 +14,7 @@
         </div>
       </Col>
     </Row>
-    <Row justify="space-between" type="flex" style="margin-bottom:20px">
+    <Row justify="space-between" type="flex" style="margin-bottom:7px">
       <Col span="24" class="chart-item">
         <BarOrLineCharts ref="lineCharts" chart-type="line" />
       </Col>

@@ -7,6 +7,7 @@
 import { COLOR, randomValues } from "../../utils/charts-func";
 import echarts from "../../utils/echarts";
 export default {
+  name: "BarOrLineCharts",
   props: {
     height: {
       type: String,
