@@ -15,6 +15,15 @@
     <div style="margin-top:15px">
       <TableList :columns="columns" :tableData="tableData" center @on-view="handleView"></TableList>
     </div>
+    <div style="margin-top:15px">
+      <TableList
+        :columns="columns1"
+        :tableData="tableData"
+        center
+        @on-view="handleView"
+        ref="selection"
+      ></TableList>
+    </div>
   </div>
 </template>
 
@@ -27,6 +36,30 @@ export default {
   data() {
     return {
       columns: [
+        {
+          title: "Name",
+          key: "name"
+        },
+        {
+          title: "Age",
+          key: "age"
+        },
+        {
+          title: "Address",
+          key: "address"
+        },
+        {
+          title: "Action",
+          actionList: ["view", "delete"],
+          slot: "action"
+        }
+      ],
+      columns1: [
+        {
+          type: "selection",
+          width: 60,
+          align: "center"
+        },
         {
           title: "Name",
           key: "name"

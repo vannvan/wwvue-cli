@@ -1,7 +1,17 @@
 //扁平有行操作的表格
 <template>
   <div>
-    <Table :columns="columns" :data="tableData" border :size="size">
+    <Table
+      :columns="columns"
+      :data="tableData"
+      border
+      :size="size"
+      :loading="loading"
+      :height="height"
+      @on-select="handleSelect"
+      @on-select-all="handleSelectAll"
+      @on-selection-change="handleSelectionChange"
+    >
       <!-- 操作插槽 -->
       <template slot="action" scope="scope">
         <span
@@ -53,6 +63,14 @@ export default {
     center: {
       type: Boolean,
       default: false
+    },
+    loading: {
+      type: Boolean,
+      default: false
+    },
+    height: {
+      type: Number,
+      defalut: null
     }
   },
 
@@ -86,6 +104,18 @@ export default {
       let emitDo = this.getAttrs(actionType, "emit");
       console.log("触发父级操作:", emitDo);
       this.$emit(emitDo, row);
+    },
+
+    handleSelect(selection, row) {
+      this.$emit("on-select", { selection: selection, row: row });
+    },
+
+    handleSelectAll(selection) {
+      this.$emit("on-select-all", selection);
+    },
+
+    handleSelectionChange(selection) {
+      this.$emit("on-selection-change", selection);
     }
   }
 };
