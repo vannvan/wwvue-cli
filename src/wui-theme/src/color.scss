@@ -1,0 +1,49 @@
+@import 'mixin.scss';
+@include b(wui-color){
+  height: 50px;
+  width: 180px;
+  padding: 20px;
+  float: left;
+  margin-right: 30px;
+  p{
+    color: $lightColor;
+  }
+  p:nth-child(1){
+    font-weight: bold;
+  }
+  @include e(primaryColor){
+    background-color: $primaryColor
+  }
+  @include e(primaryLightColor){
+    background-color: $primaryLightColor
+  }
+  @include e(primaryActiveColor){
+    background-color: $primaryActiveColor
+  }
+}
+@include b(wui-other-color){
+  height: 50px;
+  width: 130px;
+  padding: 20px;
+  color: #fff;
+  float: left;
+  margin-right: 30px;
+  p{
+    color: $lightColor;
+  }
+  p:nth-child(1){
+    font-weight: bold;
+  }
+  @include e(info){
+    background-color: $infoColor
+  }
+  @include e(success){
+    background-color: $successColor
+  }
+  @include e(warning){
+    background-color: $warningColor
+  }
+  @include e(error){
+    background-color: $errorColor
+  }
+}

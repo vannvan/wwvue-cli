@@ -2,14 +2,15 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import routes from './routers'
 import { flatData, generateRoleRouters } from '@/utils'
-import authMenu from '@/assets/menu.js'
+import authMenu from '@/assets/js/menu.js'
 
-const CURRENT_AUTH = 'admin' //当前角色  
+const CURRENT_AUTH = 'superAdmin' //当前角色  
 
 const permissionSwitch = false //权限开关，用于某些场景开发环境需要所有路由可访问的情况
 
 
 const flatAuthMenu = flatData(authMenu[CURRENT_AUTH])
+
 
 Vue.use(Router)
 

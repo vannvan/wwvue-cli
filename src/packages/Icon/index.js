@@ -1,7 +1,7 @@
-import Icon from './src/Icon.vue';
+import WIcon from './src/Icon.vue';
 
-Icon.install = function(Vue) {
-    Vue.component(Icon.name, Icon);
+WIcon.install = function(Vue) {
+    Vue.component(WIcon.name, WIcon);
 };
 
-export default Icon;
+export default WIcon;

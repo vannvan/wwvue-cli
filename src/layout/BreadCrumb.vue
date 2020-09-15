@@ -1,9 +1,14 @@
 <template>
   <div class="bread-crumbs">
-    <span style="cursor:pointer" class="home">
+    <span style="cursor:pointer" class="home" @click="loadPage('/home')">
       <Icon type="md-home" />首页
     </span>
-    <span v-for="item in reverseBreadCrumbs" :key="item.id" :style="{}">
+    <span
+      v-for="item in reverseBreadCrumbs"
+      :key="item.id"
+      :style="{color:isLink(item)?'#2d8cf0':'#999',cursor:(isLink(item)&&!isCurrentPage(item))?'pointer':'auto'}"
+      @click="loadPage(item.path)"
+    >
       <Icon :type="item.icon" />
       {{item.name}}
     </span>
@@ -29,14 +34,14 @@ export default {
     },
     //是否链接
     isLink() {
-      return path => {
-        return path.match(/\//g).length > 1;
+      return item => {
+        return item.children ? false : true;
       };
     },
     //是否当前页面
     isCurrentPage() {
-      return path => {
-        return this.$route.path == path;
+      return item => {
+        return this.$route.path == item.path;
       };
     }
   },
@@ -45,6 +50,20 @@ export default {
     activeMenu: {
       handler(newVal) {
         this.$store.commit("setBreadCrumbs", breadCrumbsList(newVal));
+      }
+    }
+  },
+
+  mounted() {
+    console.log(this.breadCrumbs);
+  },
+
+  methods: {
+    loadPage(path) {
+      if (this.isLink(path)) {
+        this.$router.push({
+          path: path
+        });
       }
     }
   }

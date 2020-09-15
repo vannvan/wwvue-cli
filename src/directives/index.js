@@ -5,6 +5,12 @@ GlobalDirectives.install = function(Vue) {
     Vue.directive('warn', function(el) {
         el.style.color = '#FF6347'
     })
+    //input获取焦点
+    Vue.directive('focus', {
+        inserted: function(el) {
+            el.focus()
+        }
+    })
 
 }
 

@@ -4,7 +4,7 @@
     <Row style="margin-bottom:20px;margin-left:-10px;margin-right:-10px">
       <Col span="6" v-for="(item,index) in cardOpts" :key="index" class-name="padding-left-right">
         <div class="card-wrap">
-          <div class="card-icon" :style="{background:RandomColor(index)}">
+          <div class="card-icon" :style="{background:randomColor(index)}">
             <Icon :type="item.icon || 'ios-stats'" size="32" />
           </div>
           <div class="card-info">
@@ -33,6 +33,7 @@
 <script>
 import BarOrLineCharts from "../../components/echarts/BarOrLineCharts";
 import PieCharts from "../../components/echarts/PieCharts";
+import { randomColor } from "@/utils";
 export default {
   components: {
     BarOrLineCharts,
@@ -49,14 +50,9 @@ export default {
     };
   },
   computed: {
-    RandomColor() {
+    randomColor() {
       return i => {
-        return (
-          "#" +
-          Math.floor(Math.random(i) * 0xffffff)
-            .toString(16)
-            .padEnd(6, "0")
-        );
+        return randomColor(i);
       };
     }
   },

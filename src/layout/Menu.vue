@@ -3,7 +3,7 @@
     <slot></slot>
     <div class="logo-wrap">
       <h1 v-show="!collapsed">wwvue-cli-iview</h1>
-      <img src="../assets/logo.png" alt v-show="collapsed" />
+      <img src="../assets/image/logo.png" alt v-show="collapsed" />
     </div>
     <Menu
       width="auto"

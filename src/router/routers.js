@@ -8,7 +8,7 @@ export default [{
     component: resolve => require(['../pages/Login.vue'], resolve),
 }, {
     path: '/',
-    redirect: '/home',
+    redirect: '/login',
     component: resolve => require(['../layout/Layout.vue'], resolve),
     children: routerList
 }]

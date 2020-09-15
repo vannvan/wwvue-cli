@@ -18,7 +18,7 @@ export const flatData = (arr, result = []) => {
     arr.forEach(item => {
         result.push(item)
         item.children && item.children.length > 0 ? flatData(item.children, result) : ""
-        item.children = '' //如果扁平化后的数组需要显示父子层级，可以把这一项删除
+        // item.children = '' //如果扁平化后的数组需要显示父子层级，可以把这一项删除
     })
     return result
 }
@@ -134,4 +134,19 @@ export const image2Base64 = (img, callback) => {
     const reader = new FileReader()
     reader.addEventListener('load', () => callback(reader.result))
     reader.readAsDataURL(img)
+}
+
+/**
+ * 随机颜色
+ *
+ * @param {number} [i=1]
+ * @return {*} 
+ */
+export const randomColor = (i = 1) => {
+    return (
+        "#" +
+        Math.floor(Math.random(i) * 0xffffff)
+        .toString(16)
+        .padEnd(6, "0")
+    );
 }
