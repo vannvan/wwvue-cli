@@ -1,0 +1,12 @@
+../src/api/api.conf.js  6
+../src/api/http.js  78
+../src/api/index.js  16
+../src/App.vue  15
+../src/axios/api.conf.js  1
+../src/axios/http.js  1
+../src/main.js  15
+../src/packages/index.js  1
+../src/pages/HelloWorld.vue  31
+../src/router/index.js  28
+../src/router/routers.js  9
+../src/utils/index.js  1

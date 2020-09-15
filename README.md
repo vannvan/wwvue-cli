@@ -90,23 +90,23 @@ PS:此次改造后的打包命令使用方式如下：
 看云上关于取消请求的实例是这样的：
 
 ```js
-var CancelToken = axios.CancelToken;
-var source = CancelToken.source();
+var CancelToken = axios.CancelToken
+var source = CancelToken.source()
 
 axios
-  .get("/user/12345", {
-    cancelToken: source.token
+  .get('/user/12345', {
+    cancelToken: source.token,
   })
   .catch(function(thrown) {
     if (axios.isCancel(thrown)) {
-      console.log("Request canceled", thrown.message);
+      console.log('Request canceled', thrown.message)
     } else {
       // 处理错误
     }
-  });
+  })
 
 // 取消请求（message 参数是可选的）
-source.cancel("Operation canceled by the user.");
+source.cancel('Operation canceled by the user.')
 ```
 
 显然像以上这样写是不合理的，取消多个请求以及分场景取消请求采用这种方式是极其不优雅的，所以我们需要通过请求拦截来实现多样化场景。  
@@ -116,45 +116,45 @@ source.cancel("Operation canceled by the user.");
 
 ```js
 //记录取消请求操作
-store.registerModule("requestAction", {
+store.registerModule('requestAction', {
   state: {
-    cancelRequestQueue: []
+    cancelRequestQueue: [],
   },
   mutations: {
     pushRequest: (state, src) => {
-      state.cancelRequestQueue.push(src.cancelToken);
+      state.cancelRequestQueue.push(src.cancelToken)
     },
     clearRequest: ({ cancelRequestQueue }) => {
-      cancelRequestQueue.forEach(item => {
-        item("路由跳转取消请求");
-      });
-      cancelRequestQueue = [];
-    }
-  }
-});
+      cancelRequestQueue.forEach((item) => {
+        item('路由跳转取消请求')
+      })
+      cancelRequestQueue = []
+    },
+  },
+})
 ```
 
 然后我们需要在请求拦截中配置如下
 
 ```js
 //请求拦截
-Axios.interceptors.request.use(config => {
-  config.cancelToken = new Axios.CancelToken(cancel => {
-    store.commit("pushRequest", {
-      cancelToken: cancel
-    });
-  });
-  return config;
-});
+Axios.interceptors.request.use((config) => {
+  config.cancelToken = new Axios.CancelToken((cancel) => {
+    store.commit('pushRequest', {
+      cancelToken: cancel,
+    })
+  })
+  return config
+})
 ```
 
 最后只需要在 router 发生切换时清除请求队列即可
 
 ```js
 router.beforeEach(function(to, from, next) {
-  store.commit("clearRequest"); // 取消请求,非常关键
-  next();
-});
+  store.commit('clearRequest') // 取消请求,非常关键
+  next()
+})
 ```
 
 如果配置成功，可以在页面中来回切换，可以到`status`为 canceled,表示已完成取消请求。

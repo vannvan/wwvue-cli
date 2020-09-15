@@ -1,7 +1,5 @@
-import {
-  get,
-  post
-} from './http'
+import { post } from './http'
+
 export default {
-  getUserInfo: (p) => get('/v1/user-list', p), //获取用户信息
+    getUserList: p => post('/userList', p), //获取用户列表 
 }
