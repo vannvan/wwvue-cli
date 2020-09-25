@@ -40,6 +40,9 @@ Axios.interceptors.response.use(
     },
     // 服务器状态码不是200的情况
     error => {
+        // 示例：
+        // let { status, data: { message } } = error.response
+        // ViewUI.Message.error({ background: true, content: ERROR_CONF[status] + message })
         if (error.message === '路由跳转取消请求') { // 判断是否为路由跳转取消网络请求
             console.log('路由跳转取消请求' + error)
         }
