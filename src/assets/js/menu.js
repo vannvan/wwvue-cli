@@ -99,6 +99,13 @@ export default {
                     icon: 'ios-finger-print',
                     id: 56,
                     pid: 5
+                },
+                {
+                    name: '新建页面',
+                    path: "/example/new",
+                    icon: 'ios-document',
+                    id: 57,
+                    pid: 5
                 }
             ]
         }
