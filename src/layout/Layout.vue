@@ -1,12 +1,23 @@
 <template>
   <div class="layout-wrapper">
     <Layout class="layout-outer">
-      <Sider collapsible v-model="collapsed" hide-trigger breakpoint="sm" width="240">
+      <Sider
+        collapsible
+        v-model="collapsed"
+        hide-trigger
+        breakpoint="sm"
+        width="240"
+      >
         <side-menu :collapsed="collapsed" :list="menuListStore"></side-menu>
       </Sider>
       <Layout>
         <Header class="header-wrapper">
-          <Icon type="md-menu" :size="32" @click.native="handleCollapsed" :class="triggerClasses" />
+          <Icon
+            type="md-menu"
+            :size="24"
+            @click.native="handleCollapsed"
+            :class="triggerClasses"
+          />
           <!--面包屑-->
           <BreadCrumb />
           <div class="avatar">

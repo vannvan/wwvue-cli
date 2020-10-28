@@ -1,6 +1,6 @@
 import axios from 'axios'
 import API_CONFIG from './api.conf'
-import QS from 'qs';
+// import QS from 'qs';
 import ERROR_CONF from './error.conf'
 import ViewUI from 'view-design';
 
@@ -73,7 +73,7 @@ export function get(url, params) {
  */
 export function post(url, params) {
     return new Promise((resolve, reject) => {
-        Axios.post(url, QS.stringify(params))
+        Axios.post(url, params)
             .then(res => {
                 resolve(res.data);
             })
