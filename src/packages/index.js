@@ -1,7 +1,7 @@
 // Copyright (c) 2019 by https://github.com/vannvan.
 // All Rights Reserved.
 
-import WIcon from './icon/index.js';
+import WIcon from './Icon/index.js';
 const components = [
     WIcon,
 ]
