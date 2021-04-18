@@ -2,14 +2,19 @@
   <div>
     <h1>Echarts图表示例</h1>
     <Row style="margin-bottom:20px;margin-left:-10px;margin-right:-10px">
-      <Col span="6" v-for="(item,index) in cardOpts" :key="index" class-name="padding-left-right">
+      <Col
+        span="6"
+        v-for="(item, index) in cardOpts"
+        :key="index"
+        class-name="padding-left-right"
+      >
         <div class="card-wrap">
-          <div class="card-icon" :style="{background:randomColor(index)}">
+          <div class="card-icon" :style="{ background: randomColor(index) }">
             <Icon :type="item.icon || 'ios-stats'" size="32" />
           </div>
           <div class="card-info">
-            <p class="value">{{item.value}}</p>
-            <p>{{item.name}}</p>
+            <p class="value">{{ item.value }}</p>
+            <p>{{ item.name }}</p>
           </div>
         </div>
       </Col>
@@ -20,10 +25,20 @@
       </Col>
     </Row>
     <Row>
-      <Col :xxl="8" :xl="12" :md="12" class-name="chart-item left-charts padding-right">
+      <Col
+        :xxl="8"
+        :xl="12"
+        :md="12"
+        class-name="chart-item left-charts padding-right"
+      >
         <PieCharts ref="pieCharts" height="350px" />
       </Col>
-      <Col :xxl="16" :xl="12" :md="12" class-name="chart-item left-charts padding-left">
+      <Col
+        :xxl="16"
+        :xl="12"
+        :md="12"
+        class-name="chart-item left-charts padding-left"
+      >
         <BarOrLineCharts ref="barCharts" height="350px" />
       </Col>
     </Row>
@@ -31,40 +46,40 @@
 </template>
 
 <script>
-import BarOrLineCharts from "../../components/echarts/BarOrLineCharts";
-import PieCharts from "../../components/echarts/PieCharts";
-import { randomColor } from "@/utils";
+import BarOrLineCharts from '../../components/echarts/BarOrLineCharts'
+import PieCharts from '../../components/echarts/PieCharts'
+import { randomColor } from '@/utils'
 export default {
   components: {
     BarOrLineCharts,
-    PieCharts
+    PieCharts,
   },
   data() {
     return {
       cardOpts: [
-        { name: "会员总数", value: 1112, icon: "md-contact />" },
-        { name: "文章总数", value: 332 },
-        { name: "总发帖数", value: 19192 },
-        { name: "百科总发布数", value: 29222 }
-      ]
-    };
+        { name: '会员总数', value: 1112, icon: 'md-contact />' },
+        { name: '文章总数', value: 332 },
+        { name: '总发帖数', value: 19192 },
+        { name: '百科总发布数', value: 29222 },
+      ],
+    }
   },
   computed: {
     randomColor() {
-      return i => {
-        return randomColor(i);
-      };
-    }
+      return (i) => {
+        return randomColor(i)
+      }
+    },
   },
   mounted() {
     // 图表绘制必须在nextTick里
     this.$nextTick(() => {
-      this.$refs.barCharts.drawCharts({});
-      this.$refs.lineCharts.drawCharts({});
-      this.$refs.pieCharts.drawCharts({});
-    });
-  }
-};
+      this.$refs.barCharts.drawCharts({})
+      this.$refs.lineCharts.drawCharts({})
+      this.$refs.pieCharts.drawCharts({})
+    })
+  },
+}
 </script>
 
 <style lang="scss">

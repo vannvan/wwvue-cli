@@ -6,9 +6,13 @@
         <Col span="6" v-for="i in 4" :key="i">
           <div style="padding-left:10px;padding-right:10px">
             <Card style="height:200px;">
-              <p slot="title">size支持h1~h6 当前h{{i}}</p>
+              <p slot="title">size支持h1~h6 当前h{{ i }}</p>
               <p style="line-height:120px;text-align:center">
-                <CountTo :startVal="0" :endVal="randNumVals[i-1]" :size="`h${i}`"></CountTo>
+                <CountTo
+                  :startVal="0"
+                  :endVal="randNumVals[i - 1]"
+                  :size="`h${i}`"
+                ></CountTo>
               </p>
             </Card>
           </div>
@@ -70,5 +74,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>
