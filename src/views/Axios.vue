@@ -43,7 +43,7 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, ref, Ref } from 'vue'
+import { defineComponent, ref, Ref, onMounted } from 'vue'
 import axios from '../utils/axios'
 
 export default defineComponent({
@@ -53,17 +53,14 @@ export default defineComponent({
 
     const getVannvanInfo = () => {
       loading.value = true
-      axios
-        .get('/users/vannvan')
-        .then((res) => {
-          console.log(res.data)
-          loading.value = false
-          vannvanInfo.value = res.data
-        })
-        .catch(() => {
-          loading.value = false
-        })
+      axios.get('/users/vannvan').then((res) => {
+        loading.value = false
+        vannvanInfo.value = res.data
+      })
     }
+    onMounted(() => {
+      console.log('onMounted')
+    })
     getVannvanInfo()
     return {
       vannvanInfo,
@@ -85,6 +82,7 @@ export default defineComponent({
       margin: 50px;
     }
     .main-info-detail {
+      width: 400px;
       .desc-content {
         display: flex;
         justify-content: flex-start;

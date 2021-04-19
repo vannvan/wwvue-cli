@@ -5,7 +5,8 @@
         "dev": "vite",
         "build": "vue-tsc --noEmit && vite build",
         "serve": "vite preview",
-        "start": "npm run dev"
+        "start": "npm run dev",
+        "eslint-fix": "npx run eslint --fix"
     },
     "dependencies": {
         "axios": "^0.21.1",

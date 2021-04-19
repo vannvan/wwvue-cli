@@ -17,6 +17,8 @@ module.exports = {
     'import/extensions': 'off',
     'import/no-absolute-path': 'off',
     'import/no-extraneous-dependencies': 'off',
-    'no-plusplus': 'off'
+    'no-plusplus': 'off',
+    'func-names': 'off',
+    'no-unused-vars': 'off'
   }
 }

@@ -9,8 +9,8 @@ import Main from './components/layout/Main.vue'
 export default defineComponent({
   name: 'App',
   components: {
-    Main,
-  },
+    Main
+  }
 })
 </script>
 
