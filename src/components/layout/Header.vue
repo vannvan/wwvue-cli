@@ -2,7 +2,7 @@
   <div class="layout-header">
     <div class="logo-wrap">
       <img src="../../assets/logo.png" alt="" />
-      <h3>wwvue-cli vue3</h3>
+      <h3>wwvue-cli</h3>
     </div>
     <div class="header-right-content"></div>
   </div>
@@ -15,7 +15,7 @@ export default defineComponent({
   name: 'Header',
   setup() {
     return {}
-  },
+  }
 })
 </script>
 

@@ -2,6 +2,7 @@ import { createApp } from 'vue'
 import ElementPlus from 'element-plus'
 
 import WUI from './package'
+import './styles/index.scss'
 
 import App from './App.vue'
 

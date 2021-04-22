@@ -1,0 +1,90 @@
+@import './mixins.scss';
+@import './var.scss';
+
+@include b(wui-button) {
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    height: auto;
+    outline: 0;
+    text-align: center;
+
+    @include e(default) {
+        background-color: #fff;
+        border: 1px solid #ccc;
+        color: #000;
+
+        &:hover {
+            border-color: #999;
+        }
+    }
+
+    @include e(primary) {
+        background-color: $primaryColor;
+        color: #fff;
+
+        &:hover {
+            border-color: #f00;
+        }
+
+        &.is-plain {
+            background: none !important;
+            border: 1px solid $primaryColor;
+            color: #000;
+        }
+    }
+
+    @include e(success) {
+        background-color: $successColor;
+        color: #fff;
+
+        &.is-plain {
+            background: none !important;
+            border: 1px solid $successColor;
+            color: #000;
+        }
+    }
+
+    @include e(info) {
+        background-color: $infoColor;
+        color: #fff;
+
+        &.is-plain {
+            background: none !important;
+            border: 1px solid $infoColor;
+            color: #000;
+        }
+    }
+
+    @include e(error) {
+        background-color: $errorColor;
+        color: #fff;
+
+        &.is-plain {
+            background: none !important;
+            border: 1px solid $errorColor;
+            color: #000;
+        }
+    }
+
+    @include m(small) {
+        padding: 0px 7px;
+        height: 24px;
+        font-size: small;
+    }
+
+    @include m(default) {
+        padding: 0px 15px;
+        height: 32px;
+        font-size: 14px;
+
+    }
+
+    @include m(large) {
+        padding: 0px 15px;
+        height: 40px;
+        font-size: 16px;
+    }
+
+
+}

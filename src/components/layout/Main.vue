@@ -19,11 +19,11 @@ export default defineComponent({
   name: 'Main',
   components: {
     Menu,
-    Header,
+    Header
   },
   setup() {
     return {}
-  },
+  }
 })
 </script>
 
