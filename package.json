@@ -11,6 +11,8 @@
     "dependencies": {
         "axios": "^0.21.1",
         "element-plus": "^1.0.2-beta.40",
+        "rrweb": "^0.9.14",
+        "rrweb-player": "^0.7.1",
         "vue": "^3.0.5",
         "vue-router": "^4.0.6",
         "vuex": "^4.0.0"
