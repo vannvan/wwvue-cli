@@ -116,3 +116,27 @@ export default {
 ```
 
 ### 注意事项
+
+- 路由使用了自动加载的方式进行引入，可以不用手动写很多配置了，具体约定规则如下:
+
+```bash
+├── product
+    |--Manage.vue
+    |--Detail.vue
+    |——shopee
+        |-- Page.vue
+        |-- Detail.vue
+    |——lazada
+        |-- Page.vue
+        |-- Detail.vue
+    components //模块组件
+```
+
+最终解析的路由格式(components 下的组件不会被解析为页面视图)
+
+```bash
+/product/manage
+/produtc/detail
+/product/shopee/page
+/product/shopee/detail
+```

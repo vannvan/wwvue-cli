@@ -1,3 +1,12 @@
+/*
+ * @Description: utils
+ * @Date: 2021-08-23 14:21:53
+ * @Author: vannvan
+ * @Email: adoerww@gmail.com
+ * @LastEditTime: 2021-08-23 14:30:27
+ * --------
+ * Copyright (c) github.com/vannvan
+ */
 /**
  * @param {Array} arr  数据源
  * @param {Function} fn 去重方法
@@ -33,4 +42,34 @@ export const flatData = (arr, result = []) => {
 export const generateRoleRouters = (menuPermissions, routesSource) => {
     const menuPaths = menuPermissions.map(el => el.path.toLowerCase())
     return routesSource.filter(item => menuPaths.includes(item.path.toLowerCase()))
+}
+
+/**
+ * 大驼峰转中划线
+ * @param {*} str 
+ * @returns 
+ */
+
+export const  toInLine = (str) =>{
+  const renderStr = (pageNum) =>
+    pageNum
+      .split('')
+      .map((ele, index) => {
+        if (index === 0) {
+          ele = ele.toLowerCase()
+        } else {
+          if (/[A-Z]/.test(ele)) ele = '-' + ele.toLowerCase()
+        }
+        return ele
+      })
+      .join('')
+
+  return (
+    '/' +
+    str
+      .replace('/', '')
+      .split('/')
+      .map((ele) => renderStr(ele))
+      .join('/')
+  )
 }
