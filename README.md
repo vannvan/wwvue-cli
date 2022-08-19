@@ -2,7 +2,7 @@
 
 集成了`sass` 、`axios` 、`vuex`等 vue 项目必要依赖，同时完善了这些插件的使用配置，对 vuex 进行了模块化管理，集成了部分常用的方法，包含自定义指令的运用场景参考、全局混入的运用场景参考、接口封装等实际项目的标准化模块。
 
-可选Vue.js@2版本或者Vue.js@3版本
+**有Vue.js@2版本或者Vue.js@3版本模版可供选择**
 
 ![](https://badgen.net/npm/dm/wwvue-cli)
 ![](https://badgen.net/npm/v/wwvue-cli)
